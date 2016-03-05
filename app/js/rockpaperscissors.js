@@ -23,38 +23,38 @@ function randomPlay() {
 ////////////////////////////////////////////////
 
 function getPlayerMove(move) {
-	if(move === null)
-    {
-        move = getInput();
-        else
-        {
-            move = move;
-        }
-        return move;
-    }
+	return move || getInput();
 }
 
 function getComputerMove(move) {
-    if(move === null)
-    { 
-        move = randomPlay();
-        else
-        {
-            move = move;
-        }
-        return move;
-    }
+   return move || randomPlay();
 }
 
 
 function getWinner(playerMove,computerMove) {
-    var winner;
-    // Write code that will set winner to either 'player', 'computer', or 'tie' based on the values of playerMove and computerMove.
-    // Assume that the only values playerMove and computerMove can have are 'rock', 'paper', and 'scissors'.
-    // The rules of the game are that 'rock' beats 'scissors', 'scissors' beats 'paper', and 'paper' beats 'rock'.
-    /* YOUR CODE HERE */
+  var winner;
+    if (playerMove === computerMove){
+        winner = "tie";
+    }
+    else if (playerMove === "rock" && computerMove === "scissors") {
+        winner = "player";
+    }
+    else if (playerMove === "rock" && computerMove === "paper") {
+        winner = "computer";
+    }
+    else if (playerMove === "paper" && computerMove === "rock") {
+        winner = "player";
+    }
+    else if (playerMove === "paper" && computerMove === "scissors") {
+        winner = "computer";
+    }
+    else if (playerMove === "scissors" && computerMove === "paper") {
+        winner = "player";
+    }
+    else if (playerMove === "scissors" && computerMove === "rock") {
+        winner = "computer";
+    }
     return winner;
-}
 
 function playToFive() {
     console.log("Let's play Rock, Paper, Scissors");
